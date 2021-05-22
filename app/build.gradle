@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -50,4 +51,20 @@ dependencies {
 
     // 뷰페이저 2
     implementation "androidx.viewpager2:viewpager2:1.0.0"
+
+    def room_version = "2.3.0"
+    // room
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    // room 코루틴
+    implementation "androidx.room:room-ktx:$room_version"
+
+    def lifecycle_version = "2.3.0"
+    // ViewModel - 라이프 사이클
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    // LiveData - 데이터의 변경 사항을 알 수 있음
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+
+    // 뷰모델 생성하기 쉽게 해줌
+    implementation 'androidx.fragment:fragment-ktx:1.1.0'
 }
