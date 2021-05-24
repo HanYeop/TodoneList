@@ -20,21 +20,21 @@ class MemoViewModel(application: Application) : AndroidViewModel(application) {
         readAllData = repository.readAllData.asLiveData()
     }
 
-    fun addUser(memo : Memo){
+    fun addMemo(memo : Memo){
         viewModelScope.launch(Dispatchers.IO) {
-            repository.addUser(memo)
+            repository.addMemo(memo)
         }
     }
 
-    fun updateUser(memo : Memo){
+    fun updateMemo(memo : Memo){
         viewModelScope.launch(Dispatchers.IO) {
-            repository.updateUser(memo)
+            repository.updateMemo(memo)
         }
     }
 
-    fun deleteUser(memo : Memo){
+    fun deleteMemo(memo : Memo){
         viewModelScope.launch(Dispatchers.IO) {
-            repository.deleteUser(memo)
+            repository.deleteMemo(memo)
         }
     }
 

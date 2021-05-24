@@ -11,12 +11,13 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hanyeop.TodoneList.R
 import com.hanyeop.TodoneList.UI.dialog.MyCustomDialog
+import com.hanyeop.TodoneList.UI.dialog.MyCustomDialogInterface
 import com.hanyeop.TodoneList.adapter.TodoAdapter
 import com.hanyeop.TodoneList.databinding.FragmentTodoListBinding
 import com.hanyeop.TodoneList.model.Memo
 import com.hanyeop.TodoneList.viewmodel.MemoViewModel
 
-class TodoListFragment : Fragment() {
+class TodoListFragment : Fragment(), MyCustomDialogInterface {
 
     private var binding : FragmentTodoListBinding? = null
     private val memoViewModel: MemoViewModel by viewModels() // 뷰모델 연결
@@ -51,7 +52,7 @@ class TodoListFragment : Fragment() {
 
     // Fab 클릭시 사용되는 함수
     private fun onFabClicked(){
-        val myCustomDialog = MyCustomDialog(activity!!)
+        val myCustomDialog = MyCustomDialog(activity!!,this)
         myCustomDialog.show()
     }
 
@@ -69,5 +70,12 @@ class TodoListFragment : Fragment() {
     override fun onDestroyView() {
         binding = null
         super.onDestroyView()
+    }
+
+    // 다이얼로그에서 추가버튼 클릭 됐을 때
+    override fun onOkButtonClicked(content: String) {
+        val memo = Memo(false,content)
+        memoViewModel.addMemo(memo)
+        Toast.makeText(activity,"추가", Toast.LENGTH_SHORT).show()
     }
 }

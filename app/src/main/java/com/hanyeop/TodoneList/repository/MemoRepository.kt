@@ -8,16 +8,16 @@ import kotlinx.coroutines.flow.Flow
 class MemoRepository(private val memoDao: MemoDao) {
     val readAllData : Flow<List<Memo>> = memoDao.readAllData()
 
-    suspend fun addUser(memo: Memo){
-        memoDao.addUser(memo)
+    suspend fun addMemo(memo: Memo){
+        memoDao.addMemo(memo)
     }
 
-    suspend fun updateUser(memo: Memo){
-        memoDao.updateUser(memo)
+    suspend fun updateMemo(memo: Memo){
+        memoDao.updateMemo(memo)
     }
 
-    suspend fun deleteUser(memo: Memo){
-        memoDao.deleteUser(memo)
+    suspend fun deleteMemo(memo: Memo){
+        memoDao.deleteMemo(memo)
     }
 
     fun searchDatabase(searchQuery: String): Flow<List<Memo>> {

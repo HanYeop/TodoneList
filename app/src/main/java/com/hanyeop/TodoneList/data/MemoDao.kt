@@ -8,13 +8,13 @@ import kotlinx.coroutines.flow.Flow
 interface MemoDao {
     // OnConflictStrategy.IGNORE = 동일한 아이디가 있을 시 무시
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addUser(memo : Memo)
+    suspend fun addMemo(memo : Memo)
 
     @Update
-    suspend fun updateUser(memo : Memo)
+    suspend fun updateMemo(memo : Memo)
 
     @Delete
-    suspend fun deleteUser(memo : Memo)
+    suspend fun deleteMemo(memo : Memo)
 
     @Query("SELECT * FROM Memo ORDER BY id ASC")
     fun readAllData() : Flow<List<Memo>>
