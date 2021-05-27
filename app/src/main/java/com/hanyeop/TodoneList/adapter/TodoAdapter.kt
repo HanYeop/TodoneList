@@ -51,7 +51,7 @@ class TodoAdapter(private val memoViewModel: MemoViewModel) : RecyclerView.Adapt
                 memoViewModel.updateMemo(memo)
             }
             else{
-                Log.d("test5", "$currentId $currentContent 체크해제됨")
+                Log.d("test5", "$currentId $currentContent 체크해제됨.")
                 val memo = Memo(currentId,false,currentContent,currentYear,currentMonth,currentDay)
                 memoViewModel.updateMemo(memo)
             }
