@@ -22,7 +22,7 @@ class TodoListFragment : Fragment(), MyCustomDialogInterface {
 
     private var binding : FragmentTodoListBinding? = null
     private val memoViewModel: MemoViewModel by viewModels() // 뷰모델 연결
-    private val adapter : TodoAdapter by lazy { TodoAdapter() } // 어댑터 선언
+    private val adapter : TodoAdapter by lazy { TodoAdapter(memoViewModel) } // 어댑터 선언
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

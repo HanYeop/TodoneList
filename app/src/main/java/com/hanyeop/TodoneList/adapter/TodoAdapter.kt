@@ -1,13 +1,15 @@
 package com.hanyeop.TodoneList.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.hanyeop.TodoneList.R
 import com.hanyeop.TodoneList.databinding.TodoItemBinding
 import com.hanyeop.TodoneList.model.Memo
+import com.hanyeop.TodoneList.viewmodel.MemoViewModel
 
-class TodoAdapter : RecyclerView.Adapter<TodoAdapter.MyViewHolder>() {
+class TodoAdapter(private val memoViewModel: MemoViewModel) : RecyclerView.Adapter<TodoAdapter.MyViewHolder>() {
 
     private var memoList = emptyList<Memo>()
 
@@ -22,6 +24,7 @@ class TodoAdapter : RecyclerView.Adapter<TodoAdapter.MyViewHolder>() {
     // 뷰 홀더에 데이터를 바인딩
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = memoList[position]
+        val currentId = currentItem.id
         val currentCheck = currentItem.check
         val currentContent = currentItem.content
         val currentYear = currentItem.year
@@ -38,7 +41,21 @@ class TodoAdapter : RecyclerView.Adapter<TodoAdapter.MyViewHolder>() {
         holder.binding.memoCheckBox.text = currentContent
         holder.binding.dateTextView.text = "$s_currentYear/$s_currentMonth/$s_currentDay"
 
+        holder.binding.memoCheckBox.setOnCheckedChangeListener(null)
         holder.binding.memoCheckBox.isChecked = currentCheck
+
+        holder.binding.memoCheckBox.setOnCheckedChangeListener { compoundButton, b ->
+            if(b){
+                Log.d("test5", "$currentId $currentContent 체크됨")
+                val memo = Memo(currentId,true,currentContent,currentYear,currentMonth,currentDay)
+                memoViewModel.updateMemo(memo)
+            }
+            else{
+                Log.d("test5", "$currentId $currentContent 체크해제됨")
+                val memo = Memo(currentId,false,currentContent,currentYear,currentMonth,currentDay)
+                memoViewModel.updateMemo(memo)
+            }
+        }
     }
 
     // 뷰 홀더의 개수 리턴
