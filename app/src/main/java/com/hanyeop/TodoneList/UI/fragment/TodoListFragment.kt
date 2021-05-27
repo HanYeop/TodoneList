@@ -43,7 +43,6 @@ class TodoListFragment : Fragment(), MyCustomDialogInterface {
 
         // Fab 클릭시 다이얼로그 띄움
         binding!!.dialogButton.setOnClickListener {
-            Toast.makeText(activity, "테스트", Toast.LENGTH_SHORT).show()
             onFabClicked()
         }
 
@@ -73,8 +72,8 @@ class TodoListFragment : Fragment(), MyCustomDialogInterface {
     }
 
     // 다이얼로그에서 추가버튼 클릭 됐을 때
-    override fun onOkButtonClicked(content: String) {
-        val memo = Memo(false,content)
+    override fun onOkButtonClicked(content: String, year : Int, month : Int, day : Int) {
+        val memo = Memo(false,content, year, month, day)
         memoViewModel.addMemo(memo)
         Toast.makeText(activity,"추가", Toast.LENGTH_SHORT).show()
     }

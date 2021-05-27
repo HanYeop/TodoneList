@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.hanyeop.TodoneList.R
 import com.hanyeop.TodoneList.viewmodel.MemoViewModel
+import java.util.*
 
 class MyCustomDialog(context : Context, myInterface: MyCustomDialogInterface) : Dialog(context) {
 
@@ -30,16 +31,21 @@ class MyCustomDialog(context : Context, myInterface: MyCustomDialogInterface) : 
         window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         okButton.setOnClickListener {
-            val memo = memoEditView.text.toString()
+            val content = memoEditView.text.toString()
 
             // 입력하지 않았을 때
-            if ( TextUtils.isEmpty(memo)){
+            if ( TextUtils.isEmpty(content)){
                 Toast.makeText(context, "메모를 입력해주세요.", Toast.LENGTH_SHORT).show()
             }
 
             // 입력 창이 비어 있지 않을 때
             else{
-                myCustomDialogInterface.onOkButtonClicked(memo)
+                // 현재의 날짜로 메모를 추가해줌
+                val cal = Calendar.getInstance()
+                val year = cal.get(Calendar.YEAR)
+                val month = cal.get(Calendar.MONTH) + 1
+                val day = cal.get(Calendar.DATE)
+                myCustomDialogInterface.onOkButtonClicked(content, year, month, day)
                 dismiss()
             }
         }

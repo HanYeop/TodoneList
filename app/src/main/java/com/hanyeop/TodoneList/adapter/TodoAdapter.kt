@@ -23,9 +23,20 @@ class TodoAdapter : RecyclerView.Adapter<TodoAdapter.MyViewHolder>() {
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = memoList[position]
         val currentContent = currentItem.content
-        val currentCheck = currentItem.check
+        val currentYear = currentItem.year
+        val currentMonth = currentItem.month
+        val currentDay = currentItem.day
+
+        val s_currentYear = currentYear.toString()
+        var s_currentMonth = currentMonth.toString()
+        var s_currentDay = currentDay.toString()
+
+        if(currentMonth < 10) s_currentMonth = "0$currentMonth"
+        if(currentDay < 10) s_currentDay = "0$currentDay"
 
         holder.binding.memoCheckBox.text = currentContent
+        holder.binding.dateTextView.text = "$s_currentYear/$s_currentMonth/$s_currentDay"
+
     }
 
     // 뷰 홀더의 개수 리턴
