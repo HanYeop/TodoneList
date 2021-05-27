@@ -40,7 +40,8 @@ class CalendarFragment : Fragment(), MyCustomDialogInterface {
         binding!!.calendarRecyclerview.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL,false)
         binding!!.calendarRecyclerview.adapter = adapter
 
-        binding!!.calendarView.setOnDateChangeListener { calendarView, year, month, day ->
+
+        binding!!.calendarView.setOnDateChangeListener { _, year, month, day ->
             // 날짜 선택시 그 날의 정보 할당
             this.year = year
             this.month = month+1

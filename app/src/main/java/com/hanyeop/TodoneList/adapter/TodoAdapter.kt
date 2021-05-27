@@ -23,6 +23,8 @@ class TodoAdapter(private val memoViewModel: MemoViewModel) : RecyclerView.Adapt
 
     // 뷰 홀더에 데이터를 바인딩
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+
+        // 현재 아이템 정보 저장
         val currentItem = memoList[position]
         val currentId = currentItem.id
         val currentCheck = currentItem.check
@@ -31,6 +33,7 @@ class TodoAdapter(private val memoViewModel: MemoViewModel) : RecyclerView.Adapt
         val currentMonth = currentItem.month
         val currentDay = currentItem.day
 
+        // text 에 보여주기 위하여 String 으로 변환
         val s_currentYear = currentYear.toString()
         var s_currentMonth = currentMonth.toString()
         var s_currentDay = currentDay.toString()
@@ -38,13 +41,17 @@ class TodoAdapter(private val memoViewModel: MemoViewModel) : RecyclerView.Adapt
         if(currentMonth < 10) s_currentMonth = "0$currentMonth"
         if(currentDay < 10) s_currentDay = "0$currentDay"
 
+        // 현재 메모 내용과 날짜를 보여줌
         holder.binding.memoCheckBox.text = currentContent
         holder.binding.dateTextView.text = "$s_currentYear/$s_currentMonth/$s_currentDay"
 
+        // 리스너를 초기화 해줘서 오류 방지
         holder.binding.memoCheckBox.setOnCheckedChangeListener(null)
+        // 그 메모의 체크 상태를 동기화
         holder.binding.memoCheckBox.isChecked = currentCheck
 
-        holder.binding.memoCheckBox.setOnCheckedChangeListener { compoundButton, b ->
+        // 체크시 그 메모의 체크 상태를 동기화
+        holder.binding.memoCheckBox.setOnCheckedChangeListener { _, b ->
             if(b){
                 Log.d("test5", "$currentId $currentContent 체크됨")
                 val memo = Memo(currentId,true,currentContent,currentYear,currentMonth,currentDay)
