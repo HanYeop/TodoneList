@@ -16,6 +16,7 @@ import com.hanyeop.TodoneList.adapter.TodoAdapter
 import com.hanyeop.TodoneList.databinding.FragmentTodoListBinding
 import com.hanyeop.TodoneList.model.Memo
 import com.hanyeop.TodoneList.viewmodel.MemoViewModel
+import java.util.*
 
 class TodoListFragment : Fragment(), MyCustomDialogInterface {
 
@@ -72,7 +73,15 @@ class TodoListFragment : Fragment(), MyCustomDialogInterface {
     }
 
     // 다이얼로그에서 추가버튼 클릭 됐을 때
-    override fun onOkButtonClicked(content: String, year : Int, month : Int, day : Int) {
+    override fun onOkButtonClicked(content: String) {
+
+        // 현재의 날짜를 불러옴
+        val cal = Calendar.getInstance()
+        val year = cal.get(Calendar.YEAR)
+        val month = cal.get(Calendar.MONTH) + 1
+        val day = cal.get(Calendar.DATE)
+
+        // 현재의 날짜로 메모를 추가해줌
         val memo = Memo(false,content, year, month, day)
         memoViewModel.addMemo(memo)
         Toast.makeText(activity,"추가", Toast.LENGTH_SHORT).show()

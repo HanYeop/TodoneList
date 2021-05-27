@@ -40,12 +40,8 @@ class MyCustomDialog(context : Context, myInterface: MyCustomDialogInterface) : 
 
             // 입력 창이 비어 있지 않을 때
             else{
-                // 현재의 날짜로 메모를 추가해줌
-                val cal = Calendar.getInstance()
-                val year = cal.get(Calendar.YEAR)
-                val month = cal.get(Calendar.MONTH) + 1
-                val day = cal.get(Calendar.DATE)
-                myCustomDialogInterface.onOkButtonClicked(content, year, month, day)
+                // 메모를 추가해줌
+                myCustomDialogInterface.onOkButtonClicked(content)
                 dismiss()
             }
         }

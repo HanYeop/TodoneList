@@ -6,6 +6,7 @@ import com.hanyeop.TodoneList.data.MemoDatabase
 import com.hanyeop.TodoneList.model.Memo
 import com.hanyeop.TodoneList.repository.MemoRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
 // 뷰모델은 DB에 직접 접근하지 않아야함. Repository 에서 데이터 통신.
@@ -36,6 +37,10 @@ class MemoViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.deleteMemo(memo)
         }
+    }
+
+    fun readDateData(year : Int, month : Int, day : Int): LiveData<List<Memo>> {
+        return repository.readDateData(year, month, day).asLiveData()
     }
 
     fun searchDatabase(searchQuery: String): LiveData<List<Memo>> {

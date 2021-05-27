@@ -20,6 +20,10 @@ class MemoRepository(private val memoDao: MemoDao) {
         memoDao.deleteMemo(memo)
     }
 
+    fun readDateData(year : Int, month : Int, day : Int): Flow<List<Memo>> {
+        return memoDao.readDateData(year, month, day)
+    }
+
     fun searchDatabase(searchQuery: String): Flow<List<Memo>> {
         return memoDao.searchDatabase(searchQuery)
     }
