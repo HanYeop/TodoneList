@@ -1,4 +1,4 @@
-package com.hanyeop.TodoneList
+package com.hanyeop.todoneList
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

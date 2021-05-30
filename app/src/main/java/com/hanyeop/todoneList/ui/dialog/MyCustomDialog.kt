@@ -1,4 +1,4 @@
-package com.hanyeop.TodoneList.UI.dialog
+package com.hanyeop.todoneList.ui.dialog
 
 import android.app.Dialog
 import android.content.Context
@@ -9,10 +9,7 @@ import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.fragment.app.viewModels
-import com.hanyeop.TodoneList.R
-import com.hanyeop.TodoneList.viewmodel.MemoViewModel
-import java.util.*
+import com.hanyeop.todoneList.R
 
 class MyCustomDialog(context : Context, myInterface: MyCustomDialogInterface) : Dialog(context) {
 

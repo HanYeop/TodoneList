@@ -1,12 +1,11 @@
-package com.hanyeop.TodoneList.viewmodel
+package com.hanyeop.todoneList.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.hanyeop.TodoneList.data.MemoDatabase
-import com.hanyeop.TodoneList.model.Memo
-import com.hanyeop.TodoneList.repository.MemoRepository
+import com.hanyeop.todoneList.data.MemoDatabase
+import com.hanyeop.todoneList.model.Memo
+import com.hanyeop.todoneList.repository.MemoRepository
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
 // 뷰모델은 DB에 직접 접근하지 않아야함. Repository 에서 데이터 통신.

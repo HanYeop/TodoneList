@@ -1,7 +1,7 @@
-package com.hanyeop.TodoneList.data
+package com.hanyeop.todoneList.data
 
 import androidx.room.*
-import com.hanyeop.TodoneList.model.Memo
+import com.hanyeop.todoneList.model.Memo
 import kotlinx.coroutines.flow.Flow
 
 @Dao

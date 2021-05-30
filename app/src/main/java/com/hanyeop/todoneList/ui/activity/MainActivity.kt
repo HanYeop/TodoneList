@@ -1,14 +1,11 @@
-package com.hanyeop.TodoneList.UI.activity
+package com.hanyeop.todoneList.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import androidx.appcompat.widget.SearchView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.hanyeop.TodoneList.R
-import com.hanyeop.TodoneList.adapter.ViewPagerAdapter
-import com.hanyeop.TodoneList.databinding.ActivityMainBinding
+import com.hanyeop.todoneList.adapter.ViewPagerAdapter
+import com.hanyeop.todoneList.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

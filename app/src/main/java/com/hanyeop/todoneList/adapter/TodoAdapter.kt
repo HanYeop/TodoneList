@@ -1,13 +1,12 @@
-package com.hanyeop.TodoneList.adapter
+package com.hanyeop.todoneList.adapter
 
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.hanyeop.TodoneList.R
-import com.hanyeop.TodoneList.databinding.TodoItemBinding
-import com.hanyeop.TodoneList.model.Memo
-import com.hanyeop.TodoneList.viewmodel.MemoViewModel
+import com.hanyeop.todoneList.databinding.TodoItemBinding
+import com.hanyeop.todoneList.model.Memo
+import com.hanyeop.todoneList.viewmodel.MemoViewModel
 
 class TodoAdapter(private val memoViewModel: MemoViewModel) : RecyclerView.Adapter<TodoAdapter.MyViewHolder>() {
 

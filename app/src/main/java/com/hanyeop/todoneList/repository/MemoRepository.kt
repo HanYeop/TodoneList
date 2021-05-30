@@ -1,7 +1,7 @@
-package com.hanyeop.TodoneList.repository
+package com.hanyeop.todoneList.repository
 
-import com.hanyeop.TodoneList.data.MemoDao
-import com.hanyeop.TodoneList.model.Memo
+import com.hanyeop.todoneList.data.MemoDao
+import com.hanyeop.todoneList.model.Memo
 import kotlinx.coroutines.flow.Flow
 
 // 앱에서 사용하는 데이터와 그 데이터 통신을 하는 역할

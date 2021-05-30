@@ -1,6 +1,5 @@
-package com.hanyeop.TodoneList.UI.fragment
+package com.hanyeop.todoneList.ui.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -9,13 +8,13 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.hanyeop.TodoneList.R
-import com.hanyeop.TodoneList.UI.dialog.MyCustomDialog
-import com.hanyeop.TodoneList.UI.dialog.MyCustomDialogInterface
-import com.hanyeop.TodoneList.adapter.TodoAdapter
-import com.hanyeop.TodoneList.databinding.FragmentTodoListBinding
-import com.hanyeop.TodoneList.model.Memo
-import com.hanyeop.TodoneList.viewmodel.MemoViewModel
+import com.hanyeop.todoneList.R
+import com.hanyeop.todoneList.ui.dialog.MyCustomDialog
+import com.hanyeop.todoneList.ui.dialog.MyCustomDialogInterface
+import com.hanyeop.todoneList.adapter.TodoAdapter
+import com.hanyeop.todoneList.databinding.FragmentTodoListBinding
+import com.hanyeop.todoneList.model.Memo
+import com.hanyeop.todoneList.viewmodel.MemoViewModel
 import java.util.*
 
 class TodoListFragment : Fragment(), MyCustomDialogInterface {

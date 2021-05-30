@@ -1,4 +1,4 @@
-package com.hanyeop.TodoneList.UI.dialog
+package com.hanyeop.todoneList.ui.dialog
 
 interface MyCustomDialogInterface {
     fun onOkButtonClicked(content : String)

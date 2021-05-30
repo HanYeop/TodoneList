@@ -1,4 +1,4 @@
-package com.hanyeop.TodoneList
+package com.hanyeop.todoneList
 
 import org.junit.Test
 

@@ -1,11 +1,11 @@
-package com.hanyeop.TodoneList.adapter
+package com.hanyeop.todoneList.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.hanyeop.TodoneList.UI.fragment.CalendarFragment
-import com.hanyeop.TodoneList.UI.fragment.DoneListFragment
-import com.hanyeop.TodoneList.UI.fragment.TodoListFragment
+import com.hanyeop.todoneList.ui.fragment.CalendarFragment
+import com.hanyeop.todoneList.ui.fragment.DoneListFragment
+import com.hanyeop.todoneList.ui.fragment.TodoListFragment
 
 class ViewPagerAdapter (fragment : FragmentActivity) : FragmentStateAdapter(fragment){
     override fun getItemCount(): Int = 3

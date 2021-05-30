@@ -1,4 +1,4 @@
-package com.hanyeop.TodoneList.UI.fragment
+package com.hanyeop.todoneList.ui.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,15 +9,12 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.hanyeop.TodoneList.R
-import com.hanyeop.TodoneList.UI.dialog.MyCustomDialog
-import com.hanyeop.TodoneList.UI.dialog.MyCustomDialogInterface
-import com.hanyeop.TodoneList.adapter.TodoAdapter
-import com.hanyeop.TodoneList.databinding.FragmentCalendarBinding
-import com.hanyeop.TodoneList.databinding.FragmentTodoListBinding
-import com.hanyeop.TodoneList.model.Memo
-import com.hanyeop.TodoneList.viewmodel.MemoViewModel
-import java.util.*
+import com.hanyeop.todoneList.ui.dialog.MyCustomDialog
+import com.hanyeop.todoneList.ui.dialog.MyCustomDialogInterface
+import com.hanyeop.todoneList.adapter.TodoAdapter
+import com.hanyeop.todoneList.databinding.FragmentCalendarBinding
+import com.hanyeop.todoneList.model.Memo
+import com.hanyeop.todoneList.viewmodel.MemoViewModel
 
 class CalendarFragment : Fragment(), MyCustomDialogInterface {
 

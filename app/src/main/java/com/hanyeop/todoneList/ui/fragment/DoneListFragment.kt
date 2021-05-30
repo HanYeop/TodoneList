@@ -1,11 +1,11 @@
-package com.hanyeop.TodoneList.UI.fragment
+package com.hanyeop.todoneList.ui.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.hanyeop.TodoneList.R
+import com.hanyeop.todoneList.R
 
 class DoneListFragment : Fragment() {
     override fun onCreateView(
