@@ -32,6 +32,9 @@ class TodoListFragment : Fragment(), MyCustomDialogInterface {
         // 뷰바인딩
         binding = FragmentTodoListBinding.inflate(inflater,container,false)
 
+        // 아이템에 아이디를 설정해줌 (깜빡이는 현상방지)
+        adapter.setHasStableIds(true)
+
         // 아이템을 가로로 하나씩 보여주고 어댑터 연결
         binding!!.todoRecyclerView.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
         binding!!.todoRecyclerView.adapter = adapter
