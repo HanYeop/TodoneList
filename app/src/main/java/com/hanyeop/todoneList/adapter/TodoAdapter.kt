@@ -1,11 +1,12 @@
 package com.hanyeop.todoneList.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.hanyeop.todoneList.databinding.TodoItemBinding
 import com.hanyeop.todoneList.model.Memo
+import com.hanyeop.todoneList.ui.dialog.UpdateDialog
+import com.hanyeop.todoneList.ui.dialog.UpdateDialogInterface
 import com.hanyeop.todoneList.viewmodel.MemoViewModel
 
 class TodoAdapter(private val memoViewModel: MemoViewModel) : RecyclerView.Adapter<TodoAdapter.MyViewHolder>() {
@@ -13,9 +14,14 @@ class TodoAdapter(private val memoViewModel: MemoViewModel) : RecyclerView.Adapt
     private var memoList = emptyList<Memo>()
 
     // 뷰 홀더에 데이터를 바인딩
-    class MyViewHolder(private val binding: TodoItemBinding) : RecyclerView.ViewHolder(binding.root){
+    class MyViewHolder(private val binding: TodoItemBinding) : RecyclerView.ViewHolder(binding.root),
+            UpdateDialogInterface{
+        lateinit var memo : Memo
+        lateinit var memoViewModel: MemoViewModel
+
         fun bind(currentMemo : Memo, memoViewModel: MemoViewModel){
             binding.memo = currentMemo
+            this.memoViewModel = memoViewModel
 
             // 체크 리스너 초기화 해줘 중복 오류 방지
             binding.memoCheckBox.setOnCheckedChangeListener(null)
@@ -23,14 +29,14 @@ class TodoAdapter(private val memoViewModel: MemoViewModel) : RecyclerView.Adapt
             // 메모 체크 시 체크 데이터 업데이트
             binding.memoCheckBox.setOnCheckedChangeListener { _, check ->
                 if (check) {
-                    val memo = Memo(currentMemo.id, true, currentMemo.content,
+                    memo = Memo(currentMemo.id, true, currentMemo.content,
                             currentMemo.year, currentMemo.month, currentMemo.day)
-                    memoViewModel.updateMemo(memo)
+                    this.memoViewModel.updateMemo(memo)
                 }
                 else {
-                    val memo = Memo(currentMemo.id, false, currentMemo.content,
+                    memo = Memo(currentMemo.id, false, currentMemo.content,
                             currentMemo.year, currentMemo.month, currentMemo.day)
-                    memoViewModel.updateMemo(memo)
+                    this.memoViewModel.updateMemo(memo)
                 }
             }
 
@@ -38,6 +44,19 @@ class TodoAdapter(private val memoViewModel: MemoViewModel) : RecyclerView.Adapt
             binding.deleteButton.setOnClickListener {
                 memoViewModel.deleteMemo(currentMemo)
             }
+
+            // 수정 버튼 클릭 시 다이얼로그 띄움
+            binding.updateButton.setOnClickListener {
+                memo = currentMemo
+                val myCustomDialog = UpdateDialog(binding.updateButton.context,this)
+                myCustomDialog.show()
+            }
+        }
+
+        // 다이얼로그의 결과값으로 업데이트 해줌
+        override fun onOkButtonClicked(content: String) {
+            val updateMemo = Memo(memo.id,memo.check,content,memo.year,memo.month,memo.day)
+            memoViewModel.updateMemo(updateMemo)
         }
     }
 
@@ -67,6 +86,4 @@ class TodoAdapter(private val memoViewModel: MemoViewModel) : RecyclerView.Adapt
     override fun getItemId(position: Int): Long {
         return position.toLong()
     }
-
-
 }
