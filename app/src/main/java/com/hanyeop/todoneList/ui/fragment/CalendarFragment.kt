@@ -1,6 +1,7 @@
 package com.hanyeop.todoneList.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -33,6 +34,9 @@ class CalendarFragment : Fragment(), MyCustomDialogInterface {
         // 뷰바인딩
         binding = FragmentCalendarBinding.inflate(inflater,container,false)
 
+        // 아이템에 아이디를 설정해줌 (깜빡이는 현상방지)
+        adapter.setHasStableIds(true)
+
         // 아이템을 가로로 하나씩 보여주고 어댑터 연결
         binding!!.calendarRecyclerview.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL,false)
         binding!!.calendarRecyclerview.adapter = adapter
@@ -46,11 +50,20 @@ class CalendarFragment : Fragment(), MyCustomDialogInterface {
 
             binding!!.calendarDateText.text = "${this.year}/${this.month}/${this.day}"
 
-            // 리스트 관찰하여 변경시 어댑터에 전달해줌
-            memoViewModel.readDateData(this.year,this.month,this.day).observe(viewLifecycleOwner, Observer {
-                adapter.setData(it)
-            })
+            // 해당 날짜 데이터를 불러옴 (currentData 변경)
+            memoViewModel.readDateData(this.year,this.month,this.day)
         }
+
+        // 메모 데이터가 수정되었을 경우 날짜 데이터를 불러옴 (currentData 변경)
+        memoViewModel.readAllData.observe(viewLifecycleOwner, {
+            memoViewModel.readDateData(year, month, day)
+        })
+
+        // 현재 날짜 데이터 리스트(currentData) 관찰하여 변경시 어댑터에 전달해줌
+        memoViewModel.currentData.observe(viewLifecycleOwner, Observer {
+            adapter.setData(it)
+            Log.d("test5", "onCreateView: gg")
+        })
 
         // Fab 클릭시 다이얼로그 띄움
         binding!!.calendarDialogButton.setOnClickListener {

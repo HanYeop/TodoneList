@@ -14,6 +14,11 @@ class MemoViewModel(application: Application) : AndroidViewModel(application) {
     val readAllData : LiveData<List<Memo>>
     private val repository : MemoRepository
 
+    // get set
+    private var _currentData = MutableLiveData<List<Memo>>()
+    val currentData : LiveData<List<Memo>>
+        get() = _currentData
+
     init{
         val memoDao = MemoDatabase.getDatabase(application)!!.memoDao()
         repository = MemoRepository(memoDao)
@@ -38,8 +43,11 @@ class MemoViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun readDateData(year : Int, month : Int, day : Int): LiveData<List<Memo>> {
-        return repository.readDateData(year, month, day).asLiveData()
+    fun readDateData(year : Int, month : Int, day : Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val tmp = repository.readDateData(year, month, day)
+            _currentData.postValue(tmp)
+        }
     }
 
     fun searchDatabase(searchQuery: String): LiveData<List<Memo>> {
