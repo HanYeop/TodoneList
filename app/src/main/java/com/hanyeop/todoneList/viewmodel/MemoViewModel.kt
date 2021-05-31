@@ -50,7 +50,7 @@ class MemoViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun searchDatabase(searchQuery: String): LiveData<List<Memo>> {
-        return repository.searchDatabase(searchQuery).asLiveData()
-    }
+//    fun searchDatabase(searchQuery: String): LiveData<List<Memo>> {
+//        return repository.searchDatabase(searchQuery).asLiveData()
+//    }
 }

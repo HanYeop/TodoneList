@@ -24,6 +24,6 @@ interface MemoDao {
     @Query("SELECT * FROM Memo WHERE year = :year AND month = :month AND day = :day ORDER BY id DESC")
     fun readDateData(year : Int, month : Int, day : Int) : List<Memo>
 
-    @Query("SELECT * FROM Memo WHERE content LIKE :searchQuery")
-    fun searchDatabase(searchQuery : String) : Flow<List<Memo>>
+//    @Query("SELECT * FROM Memo WHERE content LIKE :searchQuery")
+//    fun searchDatabase(searchQuery : String) : Flow<List<Memo>>
 }

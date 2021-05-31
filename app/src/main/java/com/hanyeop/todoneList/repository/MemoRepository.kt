@@ -24,7 +24,7 @@ class MemoRepository(private val memoDao: MemoDao) {
         return memoDao.readDateData(year, month, day)
     }
 
-    fun searchDatabase(searchQuery: String): Flow<List<Memo>> {
-        return memoDao.searchDatabase(searchQuery)
-    }
+//    fun searchDatabase(searchQuery: String): Flow<List<Memo>> {
+//        return memoDao.searchDatabase(searchQuery)
+//    }
 }
