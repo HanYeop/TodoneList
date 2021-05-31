@@ -27,8 +27,8 @@ class TodoListFragment : Fragment(), MyCustomDialogInterface {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // 상단 메뉴 추가
-        setHasOptionsMenu(true)
+//        // 상단 메뉴 추가
+//        setHasOptionsMenu(true)
         // 뷰바인딩
         binding = FragmentTodoListBinding.inflate(inflater,container,false)
 

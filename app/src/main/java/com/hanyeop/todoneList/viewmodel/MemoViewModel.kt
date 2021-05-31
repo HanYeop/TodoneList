@@ -12,6 +12,7 @@ import kotlinx.coroutines.launch
 class MemoViewModel(application: Application) : AndroidViewModel(application) {
 
     val readAllData : LiveData<List<Memo>>
+    val readDoneData : LiveData<List<Memo>>
     private val repository : MemoRepository
 
     // get set
@@ -23,6 +24,7 @@ class MemoViewModel(application: Application) : AndroidViewModel(application) {
         val memoDao = MemoDatabase.getDatabase(application)!!.memoDao()
         repository = MemoRepository(memoDao)
         readAllData = repository.readAllData.asLiveData()
+        readDoneData = repository.readDoneData.asLiveData()
     }
 
     fun addMemo(memo : Memo){

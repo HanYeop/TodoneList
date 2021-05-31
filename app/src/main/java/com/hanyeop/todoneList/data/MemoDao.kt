@@ -24,6 +24,10 @@ interface MemoDao {
     @Query("SELECT * FROM Memo WHERE year = :year AND month = :month AND day = :day ORDER BY id DESC")
     fun readDateData(year : Int, month : Int, day : Int) : List<Memo>
 
+    // 완료한 메모만 출력
+    @Query("SELECT * FROM Memo WHERE `check` = 1 ORDER BY year DESC, month DESC, day DESC, id DESC")
+    fun readDoneData() : Flow<List<Memo>>
+
 //    @Query("SELECT * FROM Memo WHERE content LIKE :searchQuery")
 //    fun searchDatabase(searchQuery : String) : Flow<List<Memo>>
 }
