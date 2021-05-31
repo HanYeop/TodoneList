@@ -1,6 +1,7 @@
 package com.hanyeop.todoneList.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -49,11 +50,14 @@ class CalendarFragment : Fragment(), MyCustomDialogInterface {
 
             binding!!.calendarDateText.text = "${this.year}/${this.month}/${this.day}"
 
-            // 리스트 관찰하여 변경시 어댑터에 전달해줌
-            memoViewModel.readDateData(this.year,this.month,this.day).observe(viewLifecycleOwner, Observer {
-                adapter.setData(it)
-            })
+            memoViewModel.readDateData(this.year,this.month,this.day)
         }
+
+        // 리스트 관찰하여 변경시 어댑터에 전달해줌
+        memoViewModel.currentData.observe(viewLifecycleOwner, Observer {
+            adapter.setData(it)
+            Log.d("test5", "onCreateView: gg")
+        })
 
         // Fab 클릭시 다이얼로그 띄움
         binding!!.calendarDialogButton.setOnClickListener {
