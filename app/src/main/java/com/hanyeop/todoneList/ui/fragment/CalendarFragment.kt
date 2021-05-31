@@ -50,10 +50,16 @@ class CalendarFragment : Fragment(), MyCustomDialogInterface {
 
             binding!!.calendarDateText.text = "${this.year}/${this.month}/${this.day}"
 
+            // 해당 날짜 데이터를 불러옴 (currentData 변경)
             memoViewModel.readDateData(this.year,this.month,this.day)
         }
 
-        // 리스트 관찰하여 변경시 어댑터에 전달해줌
+        // 메모 데이터가 수정되었을 경우 날짜 데이터를 불러옴 (currentData 변경)
+        memoViewModel.readAllData.observe(viewLifecycleOwner, {
+            memoViewModel.readDateData(year, month, day)
+        })
+
+        // 현재 날짜 데이터 리스트(currentData) 관찰하여 변경시 어댑터에 전달해줌
         memoViewModel.currentData.observe(viewLifecycleOwner, Observer {
             adapter.setData(it)
             Log.d("test5", "onCreateView: gg")
