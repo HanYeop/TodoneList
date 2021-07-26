@@ -4,6 +4,8 @@ MVVM 패턴으로 Todo, Done List 만들기
 
 https://hanyeop.tistory.com/222
 
+[APK 다운로드](https://github.com/HanYeop/TodoneList/files/6878847/TodoList.zip)
+
 ## 사용한 라이브러리
 * Android Architecture Components
   * LiveData
@@ -26,6 +28,6 @@ https://hanyeop.tistory.com/222
 * Third Party
   * Kotlin Coroutine
 
-[APK 다운로드](https://github.com/HanYeop/TodoneList/files/6878847/TodoList.zip)
+
 
 
