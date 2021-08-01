@@ -1,6 +1,6 @@
 # TodoneList
 
-MVVM 패턴으로 Todo, Done List 만들기
+MVVM 패턴으로 구현한 Todo, Done List
 
 https://hanyeop.tistory.com/222
 
